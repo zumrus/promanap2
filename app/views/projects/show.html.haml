@@ -1,4 +1,12 @@
 = @project.name
+%br
+Users:
+- @project.users.each do |u|
+		= u.name
+		, 
+		= u.email
+		%br
+
 = link_to 'Edit', edit_project_path(@project)
 |
 \#{link_to 'Back', projects_path}
