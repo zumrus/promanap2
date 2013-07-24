@@ -19,5 +19,9 @@
     = f.label :status
     %br/
     = f.check_box :status
+  .field
+    = f.label :project_id
+    %br/
+    = f.select(:project_id, options_from_collection_for_select((Project.all), :id, :name))
   .actions
     = f.submit

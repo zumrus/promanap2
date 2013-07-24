@@ -2,11 +2,22 @@
 %br
 Users:
 - @project.users.each do |u|
-		= u.name
-		, 
-		= u.email
-		%br
+	= u.name
+	, 
+	= u.email
+	%br
 
-= link_to 'Edit', edit_project_path(@project)
-|
-\#{link_to 'Back', projects_path}
+%h1 Listing tasks
+%table
+	%tr
+		%th Name
+		%th Content
+		%th Status
+- @project.tasks.sort_by{ |t| t.status}.each do |task|
+	%tr
+		%td= task.name
+		%td= task.content
+		%td= task.status
+%br/
+= link_to 'Listing of all tasks', tasks_path
+= link_to 'Back', projects_path
