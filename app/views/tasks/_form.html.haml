@@ -9,19 +9,15 @@
           %li= msg
   .field
     = f.label :name
-    %br/
     = f.text_field :name
   .field
     = f.label :content
-    %br/
     = f.text_area :content
   .field
-    = f.label :status
-    %br/
-    = f.check_box :status
+    Done?
+    %br= f.check_box :status
   .field
     = f.label :project_id
-    %br/
     = f.select(:project_id, options_from_collection_for_select((Project.all), :id, :name))
   .actions
     = f.submit

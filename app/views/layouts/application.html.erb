@@ -7,15 +7,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if current_user %>
-    <%= current_user.name %> is you. 
-    <%= link_to 'Настройки', edit_user_registration_path %><br />
-    Not you?
-<%=link_to 'Sign out', destroy_user_session_path, method: :delete%>
-  <% else %>
-<%=link_to 'Sign up', new_user_registration_path %>
-<%=link_to 'Sign in', new_user_session_path %>
-  <% end %>
+
+    <header class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <% if current_user %>
+            <nav>
+              <ul >
+                <li><%= link_to 'Settings', edit_user_registration_path %></li>
+                <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete%></li>
+              </ul>
+            </nav>
+          <% else %>
+            <nav>
+              <ul >
+                <li><%=link_to 'Sign up', new_user_registration_path %></li>
+                <li><%=link_to 'Sign in', new_user_session_path %></li>
+              </ul>
+            </nav> 
+          <% end %>         
+        </div>
+      </div>
+    </header>
+
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
 

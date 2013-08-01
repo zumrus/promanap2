@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'devise'
 gem 'haml'
 gem 'html2haml'
+gem 'bootstrap-sass'
 
 
 # Gems used only for assets and not required

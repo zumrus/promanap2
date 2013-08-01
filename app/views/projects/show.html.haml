@@ -1,23 +1,23 @@
-= @project.name
-%br
-Users:
-- @project.users.each do |u|
-	= u.name
-	, 
-	= u.email
-	%br
+.projheaddiv
+  Project: 
+  = @project.name
+  %br
+  Users:
+  - @project.users.each do |u|
+    = u.name
+    %br
 
-%h1 Listing tasks
-%table
-	%tr
-		%th Name
-		%th Content
-		%th Status
-- @project.tasks.sort_by{ |t| t.status}.each do |task|
-	%tr
-		%td= task.name
-		%td= task.content
-		%td= task.status
-%br/
+%h3 Listing tasks
+- @project.tasks.each do |task|
+  .taskdiv
+    %b= task.name
+    .contentdiv
+      = task.content
+    Status:
+    = task.status
+    
+    
+    
+
 = link_to 'Listing of all tasks', tasks_path
-= link_to 'Back', projects_path
+%br= link_to 'Back', projects_path

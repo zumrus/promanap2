@@ -1,21 +1,18 @@
 %h1 Listing tasks
-%table
-  %tr
-    %th Name
-    %th Content
-    %th Status
-    %th Project id
-    %th
-    %th
-    %th
-  - @tasks.each do |task|
-    %tr
-      %td= task.name
-      %td= task.content
-      %td= task.status
-      %td= link_to task.project_id, task.project
-      %td= link_to 'Show', task
-      %td= link_to 'Edit', edit_task_path(task)
-      %td= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
+- @tasks.sort_by{|t| t.project_id}.each do |task|
+  .tasklist
+    %b= task.name
+    %br
+    Project name:
+    %b= Project.find(task.project_id).name
+    .contentdiv
+      = task.content
+    Status:
+    = task.status
+  .actiondiv
+    = link_to 'Show', task
+    %br= link_to 'Edit', edit_task_path(task)
+    = link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }
+  .clear
+    
 = link_to 'New Task', new_task_path
