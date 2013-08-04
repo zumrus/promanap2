@@ -5,8 +5,9 @@
     %br
     Project name:
     %b= Project.find(task.project_id).name
-    .contentdiv
-      = task.content
+    %br
+    %textarea= task.content
+    %br
     Status:
     = task.status
   .actiondiv

@@ -11,8 +11,9 @@
 - @project.tasks.each do |task|
   .taskdiv
     %b= task.name
-    .contentdiv
-      = task.content
+    %br
+    %textarea= task.content
+    %br
     Status:
     = task.status
     
