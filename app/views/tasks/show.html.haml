@@ -6,7 +6,7 @@
   %textarea= @task.content
 %p
   %b Status:
-  = @task.status
+  = @task.donetodo
 = link_to 'Edit', edit_task_path(@task)
 |
 = link_to 'Back', tasks_path
