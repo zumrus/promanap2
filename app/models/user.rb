@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :project_user_relations
   has_many :projects, :through=>:project_user_relations
+  
+  has_and_belongs_to_many :roles
 end
