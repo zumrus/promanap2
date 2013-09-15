@@ -7,7 +7,10 @@ class Ability
         can :manage, :all
       else
         if user.role? :user
-          can :read, :all
+          can :create, Project
+          can :manage, Project do |p|
+            p.users.include?(user)
+          end
         end
       end    
     
