@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  before_create :create_role
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -18,5 +20,10 @@ class User < ActiveRecord::Base
   def role?(role)
     return !!self.roles.find_by_name(role)
   end
+  
+  private
+    def create_role
+      self.roles << Role.find_by_name(:user)  
+    end
 
 end
