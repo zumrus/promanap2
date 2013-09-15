@@ -11,5 +11,12 @@ class User < ActiveRecord::Base
   has_many :project_user_relations
   has_many :projects, :through=>:project_user_relations
   
-  has_and_belongs_to_many :roles
+#  has_and_belongs_to_many :roles
+  has_many :roles_users
+  has_many :roles, :through => :roles_users
+  
+  def role?(role)
+    return !!self.roles.find_by_name(role)
+  end
+
 end

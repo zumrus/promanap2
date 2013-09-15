@@ -4,8 +4,11 @@
     .namediv
       %h2= project.name
     .actiondiv
-      = link_to 'Show', project
-      %br= link_to 'Edit', edit_project_path(project)
-      = link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }
+      - if can? :read, project
+        = link_to 'Show', project
+      - if can? :update, project
+        %br= link_to 'Edit', edit_project_path(project)
+      - if can? :destroy, project
+        = link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }
     .clear
 = link_to 'New Project', new_project_path

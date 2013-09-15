@@ -1,10 +1,14 @@
 class ProjectsController < ApplicationController
+  load_and_authorize_resource
+  
   def index
-  	if current_user
-			@projects = current_user.projects
-		else
-  	  @projects = Project.all # Временная заплатка
-  	end
+    @projects = Project.all
+#  	if current_user
+##			@projects = current_user.projects
+#  	  @projects = Project.all # Временная заплатка
+#		else
+#  	  @projects = Project.all # Временная заплатка
+#  	end
 
     respond_to do |format|
       format.html # index.html.erb
